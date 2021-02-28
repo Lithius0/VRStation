@@ -8,7 +8,7 @@
  * A cylindrical coordinate system with methods to convert to and from Cartesian
  * Designed for character movement under the static friction regime
  */
-class VRSTATION_API VectorCylindrical
+class VRSTATION_API VectorCylinder
 {
 public:
 	UPROPERTY()
@@ -20,6 +20,6 @@ public:
 	UPROPERTY()
 	double z; //Height along z-axis
 
-	VectorCylindrical();
-	~VectorCylindrical();
+	VectorCylinder();
+	~VectorCylinder();
 };
