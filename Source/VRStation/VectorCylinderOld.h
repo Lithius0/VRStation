@@ -4,21 +4,25 @@
 
 #include "CoreMinimal.h"
 
+
+
 /**
  * A cylindrical coordinate system with methods to convert to and from Cartesian
  * Designed for character movement under the static friction regime
  */
 class VRSTATION_API VectorCylinder
 {
-public:
-	UPROPERTY()
+private:
+	UPROPERTY(BlueprintReadOnly, Category = )
 	double rho; //Axial distance, radius from the center
 
-	UPROPERTY()
+	UPROPERTY(BlueprintReadOnly)
 	double phi; //Azimuth, distance along the circumference of cylinder
 
-	UPROPERTY()
+	UPROPERTY(BlueprintReadOnly)
 	double z; //Height along z-axis
+
+public:
 
 	VectorCylinder();
 	~VectorCylinder();
