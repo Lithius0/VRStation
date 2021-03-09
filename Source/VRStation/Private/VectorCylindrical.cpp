@@ -3,9 +3,9 @@
 
 #include "VectorCylindrical.h"
 
-FVectorCylindrical UVectorCylindrical::MakeVectorCylindrical(float Rho, float Phi, float Z)
+FCylindricalCoordinates UVectorCylindrical::MakeVectorCylindrical(float Rho, float Phi, float Z)
 {
-	FVectorCylindrical newVector = FVectorCylindrical();
+	FCylindricalCoordinates newVector = FCylindricalCoordinates();
 
 	newVector.Rho = Rho;
 	newVector.Z = Z;
@@ -14,7 +14,14 @@ FVectorCylindrical UVectorCylindrical::MakeVectorCylindrical(float Rho, float Ph
 	return newVector;
 }
 
-FVector UVectorCylindrical::ConvertToCartesian(FVectorCylindrical VectorToConvert)
+void UVectorCylindrical::BreakVector(FCylindricalCoordinates& InVector, float& Rho, float& Phi, float& Z)
+{
+	Rho = InVector.Rho;
+	Phi = InVector.getPhi();
+	Z = InVector.Z;
+}
+
+FVector UVectorCylindrical::ConvertToCartesian(FCylindricalCoordinates VectorToConvert)
 {
 	float x = VectorToConvert.Rho * cos(VectorToConvert.getPhi());
 	float y = VectorToConvert.Rho * sin(VectorToConvert.getPhi());
@@ -23,7 +30,7 @@ FVector UVectorCylindrical::ConvertToCartesian(FVectorCylindrical VectorToConver
 	return FVector(x, y, VectorToConvert.Z);
 }
 
-FVectorCylindrical UVectorCylindrical::ConvertToCylindrical(FVector VectorToConvert)
+FCylindricalCoordinates UVectorCylindrical::ConvertToCylindrical(FVector VectorToConvert)
 {
 	float rho = VectorToConvert.Size(); // Rho is just the length of the cartesian vector
 	float phi = 0; // Phi is a little complicated
@@ -35,5 +42,5 @@ FVectorCylindrical UVectorCylindrical::ConvertToCylindrical(FVector VectorToConv
 	}
 	// Z is the same in both coordinate systems
 
-	return FVectorCylindrical();
+	return FCylindricalCoordinates();
 }
