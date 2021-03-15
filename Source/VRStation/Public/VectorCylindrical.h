@@ -6,61 +6,63 @@
 #include "Kismet/BlueprintFunctionLibrary.h"
 #include "VectorCylindrical.generated.h"
 
-USTRUCT(BlueprintType)
-struct VRSTATION_API FCylindricalCoordinates
-{
-	GENERATED_BODY()
-
-		
-	float Rho; //Axial distance, radius from the center
-	float Z; //Height along z-axis
-
-private: //phi is an angle and required mod to set
-	float Phi; //Azimuth, distance along the circumference of cylinder, measured in radians
-
-public:
-	FCylindricalCoordinates()
-	{
-		Rho = 0;
-		Phi = 0;
-		Z = 0;
-	}
-
-	float getPhi() const {
-		return Phi;
-	}
-
-	void setPhi(const float newPhi) {
-		if (newPhi >= 0) {
-			Phi = fmod(newPhi, 2 * PI);
-		}
-		else {
-			Phi = (2 * PI) - fmod(newPhi, 2 * PI);
-		}
-	}
-};
-
 /**
  * 
  */
 UCLASS()
-class VRSTATION_API UVectorCylindrical : public UBlueprintFunctionLibrary
+class VRSTATION_API UVectorCylindrical : public UObject
 {
 	GENERATED_BODY()
 
 
+private:
+	float Rho; //Axial distance, radius from the center
+	float Z; //Height along z-axis
+	float Phi; //Azimuth, distance along the circumference of cylinder, measured in radians
+
+	
 public:
+
 	/** Breaks apart a vector into rho, phi and z */
 	UFUNCTION(BlueprintPure, meta = (Keywords = "construct build cylinder", NativeMakeFunc))
-	static FCylindricalCoordinates MakeVectorCylindrical(float Rho, float Phi, float Z);
+	static UVectorCylindrical* MakeVectorCylindrical(float Rho, float Phi, float Z);
 
 	UFUNCTION(BlueprintPure, meta = (NativeBreakFunc))
-	static void BreakVector(FCylindricalCoordinates& InVector, float& Rho, float& Phi, float& Z);
+	void BreakVector(UVectorCylindrical* InVector, float& Rho, float& Phi, float& Z);
 
 	UFUNCTION(BlueprintPure)
-	static FVector ConvertToCartesian(FCylindricalCoordinates VectorToConvert);
+	FVector ConvertCylindricalToCartesian(UVectorCylindrical* InVector);
 
+	// Converts a cartesian vector to a cylindrical one
 	UFUNCTION(BlueprintPure)
-	static FCylindricalCoordinates ConvertToCylindrical(FVector VectorToConvert);
+	static UVectorCylindrical* ConvertCartesianToCylindrical(FVector InVector);
+
+	/** Converts a cylindrical vector value to a string, in the form 'Rho= Phi= Z=' */
+	UFUNCTION(BlueprintPure, meta = (DisplayName = "ToString (CylindricalVector)", CompactNodeTitle = "->", BlueprintAutocast))
+	static FString ConvertCylindricalVectorToString(UVectorCylindrical* InVectorCylindrical);
+
+	// Default constructor, sets everything to 0
+	UVectorCylindrical();
+
+	// Constructor, sets object values to the values given, Phi gets restricted between 0 and 2 pi
+	UVectorCylindrical(float newRho, float newPhi, float newZ);
+
+	// Setter function for Rho
+	void setRho(const float newRho);
+	
+	// Getter function for Rho
+	float getRho();
+
+	// Setter function that restricts phi to between 0 and 2 pi
+	void setPhi(const float newPhi);
+
+	// Getter function for Phi
+	float getPhi();
+
+	// Setter function for Z
+	void setZ(const float newZ);
+
+	// Getter function for Z
+	float getZ();
 };
 	
