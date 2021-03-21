@@ -1,0 +1,27 @@
+[
+	{
+		"file": "C:\\\\Users\\\\Justin\\\\Documents\\\\Unreal Projects\\\\VRStation\\\\Source\\\\VRStation\\\\Private\\\\VectorCylindricalLibary.cpp",
+		"command": "cl.exe @\"C:\\Users\\Justin\\Documents\\Unreal Projects\\VRStation\\.vscode\\compileCommands_VRStation\\VRStation.182.rsp\"",
+		"directory": "C:\\Program Files\\Epic Games\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "C:\\\\Users\\\\Justin\\\\Documents\\\\Unreal Projects\\\\VRStation\\\\Source\\\\VRStation\\\\Public\\\\VectorCylindricalLibrary.h",
+		"command": "cl.exe @\"C:\\Users\\Justin\\Documents\\Unreal Projects\\VRStation\\.vscode\\compileCommands_VRStation\\VRStation.182.rsp\"",
+		"directory": "C:\\Program Files\\Epic Games\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "C:\\\\Users\\\\Justin\\\\Documents\\\\Unreal Projects\\\\VRStation\\\\Source\\\\VRStation\\\\VRStation.Build.cs",
+		"command": "cl.exe @\"C:\\Users\\Justin\\Documents\\Unreal Projects\\VRStation\\.vscode\\compileCommands_VRStation\\VRStation.182.rsp\"",
+		"directory": "C:\\Program Files\\Epic Games\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "C:\\\\Users\\\\Justin\\\\Documents\\\\Unreal Projects\\\\VRStation\\\\Source\\\\VRStation\\\\VRStation.cpp",
+		"command": "cl.exe @\"C:\\Users\\Justin\\Documents\\Unreal Projects\\VRStation\\.vscode\\compileCommands_VRStation\\VRStation.182.rsp\"",
+		"directory": "C:\\Program Files\\Epic Games\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "C:\\\\Users\\\\Justin\\\\Documents\\\\Unreal Projects\\\\VRStation\\\\Source\\\\VRStation\\\\VRStation.h",
+		"command": "cl.exe @\"C:\\Users\\Justin\\Documents\\Unreal Projects\\VRStation\\.vscode\\compileCommands_VRStation\\VRStation.182.rsp\"",
+		"directory": "C:\\Program Files\\Epic Games\\UE_4.26\\Engine\\Source"
+	}
+]

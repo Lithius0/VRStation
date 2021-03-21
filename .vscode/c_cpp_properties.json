@@ -1,0 +1,9 @@
+{
+	"configurations": [
+		{
+			"name": "VRStationEditor Editor Win64 Development (VRStation)",
+			"intelliSenseMode": "msvc-x64",
+			"compileCommands": "C:\\Users\\Justin\\Documents\\Unreal Projects\\VRStation\\.vscode\\compileCommands_VRStation.json"
+		}
+	]
+}
