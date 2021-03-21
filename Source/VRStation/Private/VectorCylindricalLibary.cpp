@@ -52,6 +52,12 @@ FVectorCylindrical UVectorCylindricalLibrary::AddVectorVector(FVectorCylindrical
 	return vector1 + vector2;
 }
 
+
+FVectorCylindrical UVectorCylindricalLibrary::MultiplyVectorFloat(FVectorCylindrical vector, float multiplier)
+{
+	return vector * multiplier;
+}
+
 FVectorCylindrical::FVectorCylindrical()
 {
 	Rho = 0;
@@ -80,4 +86,9 @@ float FVectorCylindrical::getPhi()
 FVectorCylindrical FVectorCylindrical::operator+(const FVectorCylindrical vector1)
 {
 	return FVectorCylindrical(this->Rho + vector1.Rho, this->Phi + vector1.Phi, this->Z + vector1.Z);
+}
+
+FVectorCylindrical FVectorCylindrical::operator*(const float multiplier)
+{
+	return FVectorCylindrical(this->Rho * multiplier, this->Phi * multiplier, this->Z * multiplier);
 }

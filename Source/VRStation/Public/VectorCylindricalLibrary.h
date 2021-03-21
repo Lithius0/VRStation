@@ -11,6 +11,7 @@ struct VRSTATION_API FVectorCylindrical
 {
 	GENERATED_BODY()
 
+
 public:
 	float Rho; //Axial distance, radius from the center
 	float Z; //Height along z-axis
@@ -33,6 +34,8 @@ public:
 	// Overloaded add operator, adds every coordinate separately
 	FVectorCylindrical operator+(const FVectorCylindrical vector1);
 
+	// Overloaded add operator, adds every coordinate separately
+	FVectorCylindrical operator*(const float multiplier);
 };
 
 
@@ -73,5 +76,8 @@ public:
 
 	UFUNCTION(BlueprintPure, meta = (DisplayName = "VectorCylindrical + VectorCylindrical", CompactNodeTitle = "+", Keywords = "+ add plus", CommutativeAssociativeBinaryOperator = "true"))
 	static FVectorCylindrical AddVectorVector(FVectorCylindrical vector1, FVectorCylindrical vector2);
+
+	UFUNCTION(BlueprintPure, meta = (DisplayName = "VectorCylindrical * Float", CompactNodeTitle = "*", Keywords = "* multiply times"))
+	static FVectorCylindrical MultiplyVectorFloat(FVectorCylindrical vector, float multipier);
 };
 	
