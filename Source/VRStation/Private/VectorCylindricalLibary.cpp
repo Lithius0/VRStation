@@ -27,15 +27,17 @@ FVector UVectorCylindricalLibrary::ConvertCylindricalToCartesian(FVectorCylindri
 
 FVectorCylindrical UVectorCylindricalLibrary::ConvertCartesianToCylindrical(FVector VectorToConvert)
 {
-	float rho = VectorToConvert.Size(); // Rho is just the length of the cartesian vector
+	float rho = sqrt(VectorToConvert.X * VectorToConvert.X + VectorToConvert.Y * VectorToConvert.Y); // Distance to the Z-Axis
 	float phi = 0; // Phi is a little complicated
 
 	// Formulas taken from Wikipedia article on cylindrical coordinate systems
-	if (VectorToConvert.X >= 0) {
-		phi = asin(VectorToConvert.Y / rho);
-	}
-	else { // X < 0
-		phi = -asin(VectorToConvert.Y / rho) + PI;
+	if (rho > 0) { // If rho is 0, we set phi to 0 otherwise it goes to NaN
+		if (VectorToConvert.X >= 0) {
+			phi = asin(VectorToConvert.Y / rho);
+		}
+		else { // X < 0
+			phi = -asin(VectorToConvert.Y / rho) + PI;
+		}
 	}
 	// Z is the same in both coordinate systems
 
@@ -74,8 +76,13 @@ FVectorCylindrical::FVectorCylindrical(float newRho, float newPhi, float newZ)
 
 void FVectorCylindrical::setPhi(const float newPhi)
 {
-	//Confining the angle between 0 and 2 * pi
-	Phi = (newPhi > 0) ? (fmod(newPhi, 2 * PI)) : (fmod(-newPhi, 2 * PI));
+	//Confining the angle between 0 and 2 * pi (tau)
+	float x = fmod(newPhi, 2 * PI);
+	if (newPhi < 0) {
+		x += 2 * PI;
+	}
+
+	Phi = x;
 }
 
 float FVectorCylindrical::getPhi()
