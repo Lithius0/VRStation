@@ -13,9 +13,14 @@ struct VRSTATION_API FVectorCylindrical
 
 
 public:
+	UPROPERTY(VisibleAnywhere)
 	float Rho; //Axial distance, radius from the center
+
+	UPROPERTY(VisibleAnywhere)
 	float Z; //Height along z-axis
+
 private:
+	UPROPERTY(VisibleAnywhere)
 	float Phi; //Azimuth, distance along the circumference of cylinder, measured in radians
 
 public:
